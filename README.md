@@ -51,7 +51,7 @@ It demonstrates secure financial transaction handling including wallet balance m
 
 #### Authentication & Authorization
 - User status verification
-- KYC validation before withdrawals
+- validation before withdrawals
 - IP whitelisting for admin endpoints
 
 #### Data Protection
@@ -90,8 +90,8 @@ It demonstrates secure financial transaction handling including wallet balance m
 ### Collections
 
 1. **users**
-   - User profile and KYC status
-   - Indexes on email, phone, status
+   - User profile and status
+   - Indexes on email, status
 
 2. **wallets**
    - Current balance with versioning
