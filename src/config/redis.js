@@ -7,10 +7,10 @@ export const connectRedis = async () => {
   try {
     client = createClient({
       username: process.env.REDIS_USERNAME || 'default',
-      password: process.env.REDIS_PASSWORD || 'jALGTup7C8Y4udKeVlZyWJmlHLINNm1A',
+      password: process.env.REDIS_PASSWORD || 'password',
       socket: {
-        host: process.env.REDIS_HOST || 'redis-12889.c264.ap-south-1-1.ec2.cloud.redislabs.com',
-        port: process.env.REDIS_PORT || 12889
+        host: process.env.REDIS_HOST || 'host',
+        port: process.env.REDIS_PORT || 6379
       }
     });
 
