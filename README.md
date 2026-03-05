@@ -148,6 +148,23 @@ RATE_LIMIT_WINDOW_MS=60000
 RATE_LIMIT_MAX_REQUESTS=100
 ```
 
+# Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/navjot1995/payment-withdrawal-system.git
+cd payment-withdrawal-system
+```
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+---
+
 # Running the Project
 
 ## Development Mode
