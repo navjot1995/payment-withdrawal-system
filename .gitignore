@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Build / output
+dist/
+
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Optional npm cache
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Test files
+test.js

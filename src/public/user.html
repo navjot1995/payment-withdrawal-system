@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wallet System</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #f5f5f5;
+        padding: 40px;
+      }
+
+      .container {
+        background: white;
+        padding: 25px;
+        max-width: 600px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        margin-top: 30px;
+      }
+
+      input,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+      }
+
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      #response {
+        margin-top: 20px;
+        background: #eee;
+        padding: 15px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Wallet API Frontend</h1>
+
+      <!-- Create User -->
+      <h2>Create User</h2>
+      <input type="email" id="email" placeholder="Enter Email" />
+      <button onclick="createUser()">Create User</button>
+
+      <!-- Get User -->
+      <h2>Get User Details</h2>
+      <input type="text" id="userId" placeholder="Enter User ID" />
+      <button onclick="getUser()">Get User</button>
+
+      <!-- Credit Wallet -->
+      <h2>Credit Wallet</h2>
+      <input type="text" id="walletUserId" placeholder="Enter User ID" />
+      <input type="number" id="amount" placeholder="Enter Amount" />
+      <button onclick="creditWallet()">Credit Wallet</button>
+
+      <div id="response"></div>
+    </div>
+
+    <script>
+      const baseUrl = "http://localhost:3000/api";
+
+      function showResponse(data) {
+        document.getElementById("response").innerText = JSON.stringify(
+          data,
+          null,
+          2,
+        );
+      }
+
+      async function createUser() {
+        const email = document.getElementById("email").value;
+
+        try {
+          const res = await fetch(`${baseUrl}/users`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+              email: email,
+            }),
+          });
+
+          const data = await res.json();
+          showResponse(data);
+        } catch (err) {
+          showResponse(err);
+        }
+      }
+
+      async function getUser() {
+        const userId = document.getElementById("userId").value;
+
+        try {
+          const res = await fetch(`${baseUrl}/users/${userId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          });
+
+          const data = await res.json();
+          showResponse(data);
+        } catch (err) {
+          showResponse(err);
+        }
+      }
+
+      async function creditWallet() {
+        const userId = document.getElementById("walletUserId").value;
+        const amount = document.getElementById("amount").value;
+
+        try {
+          const res = await fetch(`${baseUrl}/wallets/${userId}/credit`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+              amount: amount,
+            }),
+          });
+
+          const data = await res.json();
+          showResponse(data);
+        } catch (err) {
+          showResponse(err);
+        }
+      }
+    </script>
+  </body>
+</html>
